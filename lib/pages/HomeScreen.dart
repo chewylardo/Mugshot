@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logger/logger.dart';
 
 
 
+var logger = Logger( printer: PrettyPrinter());
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -23,74 +17,307 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+ 
   int _counter = 0;
-
+ 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
+     
       _counter++;
     });
   }
+
+   void _decrementCounter() {
+    setState(() {
+    
+      _counter--;
+    });
+  }
+
+
+   void _ResetCounter() {
+    setState(() {
+    
+      _counter = 0;
+    });
+  }
   
-  
+ 
+
+  String _text(){
+    String texto = '';
+    if(_counter == 10 ){
+        texto = 'VICTORIA';
+
+      }else if (_counter == 5){
+          texto = 'DERROTA';
+      }else {
+          texto = 'has apretado el boton esta cantidad de veces:';
+      }
+
+
+    return texto;
+  }
+
+
+
 
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
+    int myIndex = 0;
+       logger.d('Home page widget build is working');
+    
+     
+    var scaffold6 = Scaffold(
+
+     
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
+
+        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+     
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      child: ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: 5, // Puedes cambiar este valor para crear más o menos tarjetas
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            margin: const EdgeInsets.symmetric(vertical: 10.0),
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text(
+                      _text(),
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        TextButton(
+                          child: const Text('Detalles de la Receta'),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Detalle(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 8),
+                       
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    ), 
+    bottomNavigationBar: BottomNavigationBar(
+      currentIndex: myIndex, 
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.store),
+          label: 'Tienda',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: 'Buscar',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          label: 'Perfil',
+        ),
+      ],
+      onTap: (int index) {
+        setState((){
+
+            myIndex = index;
+
+        });
+      },
+    ),
+   
+    
+     
+      
+  
+   
+      
+   
+    );
+    var scaffold5 = scaffold6;
+    var scaffold4 = scaffold5;
+    var scaffold3 = scaffold4;
+    var scaffold2 = scaffold3;
+    var scaffold = scaffold2;
+    return scaffold;
+  }
+
+  
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Detalle extends StatelessWidget {
+  const Detalle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var scaffold6 = Scaffold(
+      appBar: AppBar(
+        title: const Text('Detalle'),
+      ),
+      body: const Center(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              'informacion sobre detalles',
+              style: TextStyle(fontSize: 24),
             ),
+            SizedBox(height: 20),
+            
+          ],
+          
+        ),
+      ),
+      
+      persistentFooterButtons: <Widget>[
+        TextButton(
+            onPressed:(){
+               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Sobre(),
+                  ),
+                );
+              },
+              child: const Text('Sobre'),
+        ),
+
+        TextButton(
+          onPressed:(){
+               
+            Navigator.pop(context);
+          },
+        child: const Text('Volver'),)
+      ]
+    );
+
+    var scaffold5 = scaffold6;
+    var scaffold4 = scaffold5;
+    var scaffold3 = scaffold4;
+    var scaffold2 = scaffold3;
+    var scaffold = scaffold2;
+    return scaffold;
+
+  }
+}
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+class Sobre extends StatelessWidget {
+  const Sobre({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var scaffold6 = Scaffold(
+      appBar: AppBar(
+        title: const Text('Sobre'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Software programado Por Sergio Poblete',
+              style: TextStyle(fontSize: 24),
+            ),
+             SizedBox(height: 20),
+          
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      persistentFooterButtons: <Widget>[
+      
+        TextButton(
+          onPressed:(){
+               
+            Navigator.pop(context);
+          },
+        child: const Text('Volver'),)
+      ]
+      
     );
+    
+    var scaffold5 = scaffold6;
+    var scaffold4 = scaffold5;
+    var scaffold3 = scaffold4;
+    var scaffold2 = scaffold3;
+    var scaffold = scaffold2;
+    return scaffold;
+    
   }
 }

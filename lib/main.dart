@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       
-      home: const MyHomePage(title: "home")
+      home: const MyHomePage(title: "HOME")
     );
   }
 }
