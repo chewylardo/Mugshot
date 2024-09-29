@@ -1,0 +1,11 @@
+flutter_native_splash:
+  color: "#024959"
+  image: assets/pngs/perro.png
+  
+
+  android_12:
+    color: "#024959"
+    image: assets/pngs/perro.png  
+  
+
+  web: false
