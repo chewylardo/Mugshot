@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_native_splash/flutter_native_splash.dart';
 //import 'dart:async'; 
-import 'pages/HomeScreen.dart';
+import 'pages/Navegacion.dart';
 
 void main() {
  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       
-      home: const MyHomePage(title: "HOME")
+      home: const BottomBar()
     );
   }
 }
