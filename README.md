@@ -4,7 +4,8 @@ Mugshot es un proyecto realizado con Flutter que busca resolver una problemátic
 La problemática o caso habla sobre la gran oportunidad de negocios que existe en el tema del consumo de café, tanto como
 de la bebida real como del contenido relacionado a esta. Mugshot, como se mencionó anteriormente, busca tomar esta oportunidad
 para crear una aplicación móvil que funcione similar a una red social para aquellos usuarios interesados en el tema,
-desde publicar, compartir y recomendar recetas hasta incluso comprar y vender artículos relacionados al tema.
+desde publicar, compartir y recomendar recetas hasta incluso comprar y vender artículos relacionados al tema, todo esto
+con la intencion que baristas tanto expertos como afisonados puedan compartir conocimientos.
 ## Requerimientos
 ### SISTEMA:
     -La aplicación debe ser capaz de mostrar la información sobre una receta de café.
@@ -24,5 +25,5 @@ desde publicar, compartir y recomendar recetas hasta incluso comprar y vender ar
 
 ### Link al pitch de la applicacion
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Video de presentacion de la aplicacion](https://youtu.be/_Lp05n64REs)
 
