@@ -5,11 +5,11 @@ class Producto{
 
 String nombre = '';
 int precio = 0;
-String paginas;
+String pagina;
 String png;
 
 
-Producto(this.png,this.nombre,this.precio,this.paginas);
+Producto(this.png,this.nombre,this.precio,this.pagina);
 
 
 

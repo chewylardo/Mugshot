@@ -83,7 +83,7 @@ class Tienda extends StatelessWidget {
                         TextButton(
                           child: const Text('link a la pagina'),
                           onPressed: () {
-                            _launchUrl(enVenta[index].paginas);
+                            _launchUrl(enVenta[index].pagina);
                           },
                         ),
                         const SizedBox(width: 8),
