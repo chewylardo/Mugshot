@@ -6,7 +6,7 @@ de la bebida real como del contenido relacionado a esta. Mugshot, como se mencio
 para crear una aplicación móvil que funcione similar a una red social para aquellos usuarios interesados en el tema,
 desde publicar, compartir y recomendar recetas hasta incluso comprar y vender artículos relacionados al tema.
 ## Requerimientos
-SISTEMA:
+### SISTEMA:
     -La aplicación debe ser capaz de mostrar la información sobre una receta de café.
     -La aplicación debe ser capaz de poder generar una plantilla de café mediante datos ingresados por el usuario.
     -La aplicación debe ser capaz de mostrar productos relacionados a café.
@@ -14,7 +14,7 @@ SISTEMA:
     -La aplicación debe permitir al usuario seleccionar sus recetas de café favoritas.
     -La aplicación debe mostrar la información respecto al usuario ideador de las recetas.
     -La aplicación debe almacenar los datos personales básicos del usuario y sus recetas.
-USUARIO
+### USUARIO
     -"Como usuario quiero poder elegir los ingredientes específicos que irán en la receta".
     -"Como usuario quiero gestionar mis recetas creadas y favoritas".
     -"Como usuario deseo poder comprar expeditamente los productos para realizar las recetas".
