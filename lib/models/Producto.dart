@@ -1,18 +1,18 @@
 
 
+
 class Producto{
 
 String nombre = '';
-int id = 0;
+int precio = 0;
+String paginas;
+String png;
 
 
-
-
+Producto(this.png,this.nombre,this.precio,this.paginas);
 
 
 
 }
 
 
-//usar tapbar
-//usar drawer

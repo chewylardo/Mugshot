@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   logger: ^2.4.0
   flutter_native_splash: ^2.4.1
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +66,12 @@ flutter:
      
      - assets/pngs/perro.png
      - assets/pngs/Café.png
+     - assets/pngs/Perro2.png
+     - assets/pngs/cafecito.png
+     - assets/pngs/gato.png
+     - assets/pngs/cafetera.png
+     - assets/pngs/Tamper.png
+     - assets/pngs/filtro.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

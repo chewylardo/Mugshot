@@ -1,6 +1,7 @@
 
 import 'package:mugshot/models/Cafe.dart';
 
+
 class Usuario {
   String nombre;
   String usuario;
@@ -19,7 +20,7 @@ class Usuario {
   }
 
   void agregarFavorito(Cafe cafe) {
-    
+
     misFavoritos.add(cafe); 
   }
 

@@ -2,55 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:mugshot/models/Ingrediente.dart';
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
-
+import 'Navegacion.dart';
 
 class Crearcafe extends StatefulWidget {
-  const Crearcafe({super.key,required this.miUsuario});
+  const Crearcafe({super.key, required this.miUsuario});
   final Usuario miUsuario;
- 
+
   @override
   State<Crearcafe> createState() => _CrearcafeState();
 }
 
 class _CrearcafeState extends State<Crearcafe> {
-
-  final List<String> ingredients = [];
   
+ 
+  final List<String> ingredients = [];
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _ingredientsController = TextEditingController();
 
-  String? _savedName;
-  String? _savedDescription;
+  String? savedName;
+  String? savedDescription;
 
   void _saveName() {
     setState(() {
-      _savedName = _nameController.text;
+      savedName = _nameController.text;
     });
     _nameController.clear();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Saved Name: $_savedName')),
+      SnackBar(content: Text('Saved Name: $savedName')),
     );
   }
 
   void _saveDescription() {
     setState(() {
-      _savedDescription = _descriptionController.text;
+      savedDescription = _descriptionController.text;
     });
     _descriptionController.clear();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Saved Description: $_savedDescription')),
+      SnackBar(content: Text('Saved Description: $savedDescription')),
     );
   }
-
 
   void _saveIngredients() {
     setState(() {
       if (_ingredientsController.text.isNotEmpty) {
-        ingredients.add(_ingredientsController.text); 
-        _ingredientsController.clear(); 
+        ingredients.add(_ingredientsController.text);
+        _ingredientsController.clear();
       }
     });
     ScaffoldMessenger.of(context).showSnackBar(
@@ -58,25 +56,30 @@ class _CrearcafeState extends State<Crearcafe> {
     );
   }
 
+  Cafe _generarCafe(String savedName, String savedDescription, List<String> ingredients) {
 
-Cafe _generarCafe(String savedName, List<Ingrediente> ingredients) {
-  
-  Cafe myCafe = Cafe(savedName, ingredients);
-  
-  return myCafe; 
-}
+    List<Ingrediente> misIngredientes = [];
 
-void _darCafe(){
+    for(int i = 0;i<ingredients.length;i++){
+
+      misIngredientes.add(Ingrediente(ingredients[i]));
 
 
-  
+    }
 
 
 
 
-}
 
 
+
+    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario);
+    return myCafe;
+  }
+
+  void _darCafe() {
+    BottomBar.mainUsuario.agregarCafe(_generarCafe(savedName!, savedDescription!, ingredients));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +167,6 @@ void _darCafe(){
               ],
             ),
             const SizedBox(height: 20),
-         
             Expanded(
               child: ListView.builder(
                 itemCount: ingredients.length,
@@ -177,6 +179,10 @@ void _darCafe(){
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _darCafe,
+        child: const Icon(Icons.check),
       ),
     );
   }

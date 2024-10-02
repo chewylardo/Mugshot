@@ -9,9 +9,6 @@ import 'package:mugshot/models/Usuario.dart';
 
 class Perfil extends StatelessWidget {
   Perfil({super.key,  required this.miUsuario});
-
-
-
   final Usuario miUsuario;
   
   
@@ -56,7 +53,7 @@ class Perfil extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            'Descripción: $descripcion',
+            descripcion,
             style: const TextStyle(fontSize: 18),
           ),
 

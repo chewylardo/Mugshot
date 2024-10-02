@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 import 'Home.dart';
 import 'PerfilPersonal.dart';
 import 'Tienda.dart';
@@ -12,6 +11,13 @@ import 'Tienda.dart';
 
 class BottomBar extends StatefulWidget{
   const BottomBar({super.key});
+   static Usuario mainUsuario = Usuario(
+    nombre: 'Sergio',
+    usuario: '@chewy45',
+    rating: 5,
+    descripcion: 'Me gusta el café con leche y los gatos \nbarista amateur \nfan de el cafe marely :D',
+    pfp: 'assets/pngs/perro.png',
+  );
 
   @override
   State<BottomBar> createState() => _BottomBar();
@@ -19,13 +25,7 @@ class BottomBar extends StatefulWidget{
 
 class _BottomBar extends State<BottomBar> {
   
-  static Usuario mainUsuario = Usuario(
-    nombre: 'Sergio',
-    usuario: '@chewy45',
-    rating: 5,
-    descripcion: 'Me gusta el café con leche y los gatos \n barista amateur \n fan de el cafe marely',
-    pfp: 'assets/pngs/perro.png',
-  );
+ 
   
   int myIndex = 0;
 
@@ -37,9 +37,9 @@ class _BottomBar extends State<BottomBar> {
     super.initState();
 
     widgetList = [
-      MyHomePage(mainUsuario: mainUsuario,),
-      const Tienda(),
-      PerfilPersonal(miUsuario: mainUsuario), 
+      const MyHomePage(),
+      Tienda(),
+      const PerfilPersonal(), 
     ];
   }
  

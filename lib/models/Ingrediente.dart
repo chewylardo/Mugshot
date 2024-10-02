@@ -2,14 +2,10 @@
 
 class Ingrediente {
 
-String nombre = '';
+String nombre;
 
 
-Ingrediente(String A){
-
-  nombre = A;
-
-}
+Ingrediente(this.nombre){}
 
 
 
