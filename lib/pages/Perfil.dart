@@ -1,46 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/logger.dart';
+import 'package:mugshot/models/Usuario.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 
 
 
 
 
-class Sobre extends StatelessWidget {
-  const Sobre({super.key});
+
+class Perfil extends StatelessWidget {
+  Perfil({super.key,  required this.miUsuario});
+
+
+
+  final Usuario miUsuario;
+  
+  
+
 
   @override
   Widget build(BuildContext context) {
-    var scaffold6 = Scaffold(
-      appBar: AppBar(
-        title: const Text('Sobre'),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'informacion sobre detalles',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
+    
+    final String nombre = miUsuario.nombre;
+    final String usuario = miUsuario.usuario;
+    final int rating = miUsuario.rating;
+    final String descripcion = miUsuario.descripcion;
+    final String pfp = miUsuario.pfp;
+
+   return Scaffold(
+    appBar: AppBar(
+      title: Text(nombre),
+    ),
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            pfp,
+            width: 100,
+            height: 100,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Información sobre $nombre',
+            style: const TextStyle(fontSize: 24),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Usuario: $usuario',
+            style: const TextStyle(fontSize: 18),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Rating: $rating',
+            style: const TextStyle(fontSize: 18),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Descripción: $descripcion',
+            style: const TextStyle(fontSize: 18),
+          ),
+
+
             
-          ],
-          
-        ),
+
+
+
+        ],
       ),
-      
-      persistentFooterButtons: const <Widget>[
-       
-      ]
-    );
-
-    var scaffold5 = scaffold6;
-    var scaffold4 = scaffold5;
-    var scaffold3 = scaffold4;
-    var scaffold2 = scaffold3;
-    var scaffold = scaffold2;
-    return scaffold;
-
-  }
+    ),
+  );
+ }
 }

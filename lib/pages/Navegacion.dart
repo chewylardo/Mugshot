@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/logger.dart';
+import 'package:mugshot/models/Usuario.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'Home.dart';
-import 'Info del Cafe.dart';
-import 'Perfil.dart';
+import 'PerfilPersonal.dart';
 import 'Tienda.dart';
 
 
@@ -19,15 +18,30 @@ class BottomBar extends StatefulWidget{
 }
 
 class _BottomBar extends State<BottomBar> {
-
+  
+  static Usuario mainUsuario = Usuario(
+    nombre: 'Sergio',
+    usuario: '@chewy45',
+    rating: 5,
+    descripcion: 'Me gusta el café con leche y los gatos \n barista amateur \n fan de el cafe marely',
+    pfp: 'assets/pngs/perro.png',
+  );
+  
   int myIndex = 0;
 
-    List<Widget> widgetList = const[
-    MyHomePage(),
-    Sobre(),
-    Sobre(),
+ 
+  List<Widget> widgetList = [];
 
-  ];
+  @override
+  void initState() {
+    super.initState();
+
+    widgetList = [
+      MyHomePage(mainUsuario: mainUsuario,),
+      const Tienda(),
+      PerfilPersonal(miUsuario: mainUsuario), 
+    ];
+  }
  
   @override
   Widget build(BuildContext context) {

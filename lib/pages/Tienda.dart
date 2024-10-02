@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/logger.dart';
+import 'package:mugshot/pages/PerfilPersonal.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
+
 
 
 
@@ -11,23 +12,61 @@ class Tienda extends StatelessWidget {
   Widget build(BuildContext context) {
     var scaffold6 = Scaffold(
       appBar: AppBar(
-        title: const Text('Detalle'),
+        title: const Text('Productos a la venta'),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'informacion sobre detalles',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            
-          ],
-          
-        ),
-      ),
+      body: Center(
       
+      child: ListView.builder(
+       
+        padding: const EdgeInsets.all(16.0),
+        itemCount: 5, 
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            margin: const EdgeInsets.symmetric(vertical: 10.0),
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text(
+                       'hola',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Text(
+                      'hola',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        TextButton(
+                          child: const Text('Detalles de la Receta'),
+                          onPressed: () {
+                            /*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Perfil(),
+                              ),
+                            );*/
+                          },
+                        ),
+                        const SizedBox(width: 8),
+                       
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    ), 
       persistentFooterButtons: const <Widget>[
        
       ]
