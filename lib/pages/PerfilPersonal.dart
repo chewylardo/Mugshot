@@ -5,11 +5,10 @@ import 'Info del Cafe.dart';
 import 'Favorites.dart';
 import 'MyCafe.dart';
 import 'Navegacion.dart';
+import 'Opinion.dart';
 
 class PerfilPersonal extends StatelessWidget {
   const PerfilPersonal({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +23,19 @@ class PerfilPersonal extends StatelessWidget {
       appBar: AppBar(
         title: Text(nombre),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>  Opinion(),
+                      ),
+                    );
+                  },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -31,7 +43,7 @@ class PerfilPersonal extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-               Card(
+              Card(
                 elevation: 8,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),
@@ -68,8 +80,8 @@ class PerfilPersonal extends StatelessWidget {
                     ],
                   ),
                 ),
-               ),
-             const SizedBox(height: 20),
+              ),
+              const SizedBox(height: 20),
               Material(
                 elevation: 20,
                 child: TextButton(
@@ -85,7 +97,6 @@ class PerfilPersonal extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              
               const SizedBox(height: 10),
               Material(
                 elevation: 4,
@@ -94,21 +105,19 @@ class PerfilPersonal extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  const Favorites(),
+                        builder: (context) => const Favorites(),
                       ),
                     );
                   },
                   child: const Text('Ver Favoritos', style: TextStyle(color: Colors.black)),
                 ),
               ),
-              
-        ]
+            ],
+          ),
         ),
       ),
-    ),
     );
-        
-      
-    
   }
 }
+
+

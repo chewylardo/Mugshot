@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mugshot/models/Ingrediente.dart';
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
@@ -14,6 +17,7 @@ class Crearcafe extends StatefulWidget {
 
 class _CrearcafeState extends State<Crearcafe> {
   
+
  
   final List<String> ingredients = [];
 
@@ -23,6 +27,7 @@ class _CrearcafeState extends State<Crearcafe> {
 
   String? savedName;
   String? savedDescription;
+  File? _selectedImage;
 
   void _saveName() {
     setState(() {
@@ -56,6 +61,8 @@ class _CrearcafeState extends State<Crearcafe> {
     );
   }
 
+
+
   Cafe _generarCafe(String savedName, String savedDescription, List<String> ingredients) {
 
     List<Ingrediente> misIngredientes = [];
@@ -69,13 +76,15 @@ class _CrearcafeState extends State<Crearcafe> {
 
 
 
-
-
-
-
-    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario);
+    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario,_selectedImage!);
     return myCafe;
   }
+
+
+
+
+
+
 
   void _darCafe() {
     BottomBar.mainUsuario.agregarCafe(_generarCafe(savedName!, savedDescription!, ingredients));
@@ -177,6 +186,45 @@ class _CrearcafeState extends State<Crearcafe> {
                 },
               ),
             ),
+            MaterialButton(
+              color: Colors.blue,
+              child: const Text(
+                "Elegir foto de galeria",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16
+                ),
+
+              ),
+              onPressed: () {
+
+                _pickImageFromGallery();
+
+                
+              }  
+
+            ),
+              MaterialButton(
+              color: Colors.red,
+              child: const Text(
+                "Sacar foto con camara",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16
+                ),
+
+              ),
+              onPressed: () {
+                
+                _pickImageFromCammera();
+
+              },
+
+            ),
+            const SizedBox(height: 20,),
+            _selectedImage != null ? Image.file(_selectedImage!) : const Text("Seleccione imagen")
           ],
         ),
       ),
@@ -185,5 +233,32 @@ class _CrearcafeState extends State<Crearcafe> {
         child: const Icon(Icons.check),
       ),
     );
+
+    
+  }
+  Future _pickImageFromGallery() async{
+     final returnedImage =  await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if(returnedImage == null) return;
+        
+      setState(() {
+        _selectedImage = File(returnedImage!.path);
+      });
+      
+
+  }
+
+
+
+    Future _pickImageFromCammera() async{
+     final returnedImage =  await ImagePicker().pickImage(source: ImageSource.camera);
+
+      if(returnedImage == null) return;
+        
+      setState(() {
+        _selectedImage = File(returnedImage!.path);
+      });
+      
+
   }
 }

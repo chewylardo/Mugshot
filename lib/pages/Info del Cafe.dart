@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'package:mugshot/pages/Perfil.dart';
+import 'dart:io';
 import 'Navegacion.dart';
 
 class InfoCafe extends StatelessWidget {
@@ -33,7 +34,13 @@ class InfoCafe extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Image(image:AssetImage('assets/pngs/cafecito.png')),
+                        Image!= null
+            ? Image.file(
+                cofee.miIamagen,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              )  : const Text("No hay imagen seleccionada"),
                        
                         Text(
                           cofee.nombre,

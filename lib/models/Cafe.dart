@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'Ingrediente.dart';
 import 'Usuario.dart';
 class Cafe {
@@ -5,8 +6,9 @@ class Cafe {
   String descripcion;
   List<Ingrediente> ingredientes;
   Usuario miCreador;
+  File miIamagen;
 
-  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador); 
+  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen); 
 
   void agregarIngrediente(Ingrediente ingrediente) {
     ingredientes.add(ingrediente);
