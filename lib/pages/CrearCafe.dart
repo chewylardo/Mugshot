@@ -94,6 +94,7 @@ class _CrearcafeState extends State<Crearcafe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         backgroundColor: Colors.brown,
         title: const Text('Creemos un café hoy'),
       ),
       body: Center(
