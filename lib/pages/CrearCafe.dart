@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mugshot/models/Ingrediente.dart';
+
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'Navegacion.dart';
@@ -28,6 +28,9 @@ class _CrearcafeState extends State<Crearcafe> {
   String? savedName;
   String? savedDescription;
   File? _selectedImage;
+  int ? key;
+
+  int contador = 0;
 
   void _saveName() {
     setState(() {
@@ -65,18 +68,18 @@ class _CrearcafeState extends State<Crearcafe> {
 
   Cafe _generarCafe(String savedName, String savedDescription, List<String> ingredients) {
 
-    List<Ingrediente> misIngredientes = [];
+    List<String> misIngredientes = [];
 
     for(int i = 0;i<ingredients.length;i++){
 
-      misIngredientes.add(Ingrediente(ingredients[i]));
+      misIngredientes.add(ingredients[i]);
 
 
     }
+    
 
 
-
-    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario,_selectedImage!);
+    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario,_selectedImage!,contador);
     return myCafe;
   }
 

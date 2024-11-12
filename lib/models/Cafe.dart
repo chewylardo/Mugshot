@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'Ingrediente.dart';
 import 'Usuario.dart';
 class Cafe {
   String nombre;
   String descripcion;
-  List<Ingrediente> ingredientes;
+  List<String> ingredientes;
   Usuario miCreador;
   File miIamagen;
+  int key;
 
-  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen); 
+  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen,this.key); 
 
-  void agregarIngrediente(Ingrediente ingrediente) {
+  void agregarIngrediente(String ingrediente) {
     ingredientes.add(ingrediente);
   }
 
@@ -19,8 +19,8 @@ class Cafe {
 
     if (this.ingredientes.isNotEmpty) {
       for (int i = 0; i < ingredientes.length; i++) {
-        String nombre = ingredientes[i].nombre; // Ensure you're using `this.ingredientes`
-        listaDeIngredientes += "- $nombre\n"; // Concatenate the ingredient name
+        String nombre = ingredientes[i]; 
+        listaDeIngredientes += "- $nombre\n";
       }
     }
 

@@ -7,7 +7,7 @@ import 'CrearCafe.dart';
 import 'Navegacion.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 import 'package:mugshot/models/Cafe.dart';
-import 'package:mugshot/models/Ingrediente.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -53,16 +53,16 @@ class _MyHomePageState extends State<MyHomePage> {
             final File imageFile = snapshot.data!;
 
         
-            Ingrediente ingrediente1 = Ingrediente('leche');
-            Ingrediente ingrediente2 = Ingrediente('azucar');
-            Ingrediente ingrediente3 = Ingrediente('crema');
-            Ingrediente ingrediente4 = Ingrediente('Agua');
-            Ingrediente ingrediente5 = Ingrediente('Cafe en tarro');
+            String ingrediente1 = 'leche';
+            String ingrediente2 = 'azucar';
+            String ingrediente3 = 'crema';
+            String ingrediente4 = 'Agua';
+            String ingrediente5 = 'Cafe en tarro';
 
          
-            List<Ingrediente> receta1 = [ingrediente4, ingrediente5];
-            List<Ingrediente> receta2 = [ingrediente1, ingrediente5, ingrediente2];
-            List<Ingrediente> receta3 = [ingrediente3, ingrediente5, ingrediente4];
+            List<String> receta1 = [ingrediente4, ingrediente5];
+            List<String> receta2 = [ingrediente1, ingrediente5, ingrediente2];
+            List<String> receta3 = [ingrediente3, ingrediente5, ingrediente4];
 
        
             Usuario Usuario1 = Usuario(
@@ -81,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
             );
 
       
-            Cafe cafe1 = Cafe('cargado', 'solo es cafe con agua', receta1, Usuario2, imageFile);
-            Cafe cafe2 = Cafe('nocturno', 'cafe para trabajar toda la noche en proyectos universitarios', receta2, Usuario1, imageFile);
-            Cafe cafe3 = Cafe('suave', 'relajante expresion del arte enfocada en un cafe con sabores iconicos', receta3, Usuario1, imageFile);
+            Cafe cafe1 = Cafe('cargado', 'solo es cafe con agua', receta1, Usuario2, imageFile,1);
+            Cafe cafe2 = Cafe('nocturno', 'cafe para trabajar toda la noche en proyectos universitarios', receta2, Usuario1, imageFile,2);
+            Cafe cafe3 = Cafe('suave', 'relajante expresion del arte enfocada en un cafe con sabores iconicos', receta3, Usuario1, imageFile,3);
 
             Usuario1.misCafes.add(cafe2);
             Usuario1.misCafes.add(cafe3);
