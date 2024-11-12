@@ -3,6 +3,7 @@ import 'package:mugshot/models/Usuario.dart';
 import 'Info del Cafe.dart';
 import 'CrearCafe.dart';
 import 'Navegacion.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 
 
 class Favorites extends StatefulWidget {
@@ -24,8 +25,10 @@ class _Favorites extends State<Favorites > {
     final Usuario mainUsuario = BottomBar.mainUsuario;
     final String nombre = mainUsuario.nombre;
     var scaffold6 = Scaffold(
+      backgroundColor: ColorHelper.second,
     appBar: AppBar(
-      title: Text('Cafes favoritos de $nombre'),
+       backgroundColor: ColorHelper.main,
+      title: Text('Cafes favoritos de $nombre',style:const TextStyle(color: Colors.white),),
     ),
     body: Center(
       child: BottomBar.mainUsuario.misFavoritos.isEmpty

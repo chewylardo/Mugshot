@@ -7,6 +7,7 @@ import 'CrearCafe.dart';
 import 'Navegacion.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 import 'package:mugshot/models/Cafe.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -38,8 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorHelper.second,
       appBar: AppBar(
-        title: const Text('Cafes Recomendados de hoy'),
+         backgroundColor: ColorHelper.main,
+        title: const Text('Cafes Recomendados de hoy',style:const TextStyle(color: Colors.white),),
       ),
       body: FutureBuilder<File>(
         future: _imageFile,
@@ -181,17 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Crearcafe(miUsuario: BottomBar.mainUsuario),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
+   
     );
   }
 }

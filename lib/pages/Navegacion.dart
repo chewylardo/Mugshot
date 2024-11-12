@@ -3,6 +3,8 @@ import 'package:mugshot/models/Usuario.dart';
 import 'Home.dart';
 import 'PerfilPersonal.dart';
 import 'Tienda.dart';
+import 'package:mugshot/models/ColorHelper.dart';
+import 'MyCafe.dart';
 
 
 
@@ -37,8 +39,8 @@ class _BottomBar extends State<BottomBar> {
     super.initState();
 
     widgetList = [
+      const Mycafe(),
       const MyHomePage(),
-      Tienda(),
       const PerfilPersonal(), 
     ];
   }
@@ -46,6 +48,7 @@ class _BottomBar extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     var scaffold6 = Scaffold(
+      backgroundColor: ColorHelper.second,
       
       body:  Center(
 
@@ -60,14 +63,18 @@ class _BottomBar extends State<BottomBar> {
       
       bottomNavigationBar: BottomNavigationBar(
       currentIndex: myIndex, 
+      backgroundColor: ColorHelper.main,
+      selectedItemColor: Colors.white,
+      unselectedItemColor : Colors.grey,
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
+        
           icon: Icon(Icons.home),
           label: 'Inicio',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.store),
+          icon: Icon(Icons.coffee),
           label: 'Tienda',
         ),
         BottomNavigationBarItem(

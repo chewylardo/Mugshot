@@ -6,6 +6,7 @@ import 'Favorites.dart';
 import 'MyCafe.dart';
 import 'Navegacion.dart';
 import 'Opinion.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 
 class PerfilPersonal extends StatelessWidget {
   const PerfilPersonal({super.key});
@@ -20,9 +21,11 @@ class PerfilPersonal extends StatelessWidget {
     final String pfp = miUsuario.pfp;
 
     return Scaffold(
+      backgroundColor: ColorHelper.second,
       appBar: AppBar(
-        title: Text(nombre),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        
+        title: Text(nombre,style:const TextStyle(color: Colors.white),),
+        backgroundColor: ColorHelper.main,
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -44,6 +47,7 @@ class PerfilPersonal extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Card(
+                color: ColorHelper.third,
                 elevation: 8,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),

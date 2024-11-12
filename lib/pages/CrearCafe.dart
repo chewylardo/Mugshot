@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'Navegacion.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 
 class Crearcafe extends StatefulWidget {
   const Crearcafe({super.key, required this.miUsuario});
@@ -95,12 +96,15 @@ class _CrearcafeState extends State<Crearcafe> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      backgroundColor: ColorHelper.second,
       appBar: AppBar(
-         backgroundColor: Colors.brown,
-        title: const Text('Creemos un café hoy'),
+         backgroundColor: ColorHelper.main,
+        title: const Text('Creemos un café hoy',style:const TextStyle(color: Colors.white),),
       ),
       body: Center(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

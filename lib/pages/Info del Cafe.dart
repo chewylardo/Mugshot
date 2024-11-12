@@ -6,6 +6,7 @@ import 'package:mugshot/models/Usuario.dart';
 import 'package:mugshot/pages/Perfil.dart';
 import 'dart:io';
 import 'Navegacion.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 
 class InfoCafe extends StatelessWidget {
   const InfoCafe({super.key, required this.cofee, required this.usuario});
@@ -19,63 +20,72 @@ class InfoCafe extends StatelessWidget {
     return StatefulBuilder(
       builder: (context, setState) {
         return Scaffold(
+          backgroundColor: ColorHelper.second,
           appBar: AppBar(
-            title: const Text('Cafe'),
+             backgroundColor: ColorHelper.main,
+            title: const Text('Cafe',style:const TextStyle(color: Colors.white)),
           ),
           body: Stack(
             children: [
-              Center(
-                child: Card(
-                  elevation: 4,
-                  margin: const EdgeInsets.all(16),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image!= null
-            ? Image.file(
-                cofee.miIamagen,
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              )  : const Text("No hay imagen seleccionada"),
-                       
-                        Text(
-                          cofee.nombre,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          cofee.descripcion,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          cofee.ingredientesToString(),
-                        ),
-                        const SizedBox(height: 16),
-                        Material(
-                          elevation: 4,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Perfil(miUsuario: usuario)),
-                              );
-                            },
-                            child: Text(
-                              usuario.usuario,
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ),
-                        ),
-                      ],
+             Center(
+  child: SizedBox(
+    width: 500, 
+    height: 800, 
+    child: Card(
+      color: ColorHelper.third,
+      elevation: 4,
+      margin: const EdgeInsets.all(16),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          
+          children: <Widget>[
+            cofee.miIamagen != null
+                ? Image.file(
+                    cofee.miIamagen,
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                    
+                  )
+                : const Text("No hay imagen seleccionada"),
+                const SizedBox(height: 8),
+            Text(
+              cofee.nombre,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 8),
+            Text(cofee.descripcion),
+            const SizedBox(height: 8),
+            Text(cofee.ingredientesToString()),
+            const SizedBox(height: 16),
+            Material(
+              elevation: 4,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Perfil(miUsuario: usuario),
                     ),
-                  ),
+                  );
+                },
+                child: Text(
+                  usuario.usuario,
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+),
+
+              
               Positioned(
                 top: 16,
                 right: 16,

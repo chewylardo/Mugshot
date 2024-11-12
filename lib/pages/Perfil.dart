@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
 
@@ -24,8 +25,10 @@ class Perfil extends StatelessWidget {
     final String pfp = miUsuario.pfp;
 
    return Scaffold(
+    backgroundColor: ColorHelper.second,
     appBar: AppBar(
-      title: Text(nombre),
+       backgroundColor: ColorHelper.main,
+      title: Text(nombre,style:const TextStyle(color: Colors.white),),
     ),
         body: Center(
       child: Column(
