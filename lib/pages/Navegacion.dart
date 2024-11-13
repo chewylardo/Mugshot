@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
-import 'Home.dart';
+import 'MiBarista.dart';
 import 'PerfilPersonal.dart';
-import 'Tienda.dart';
+
 import 'package:mugshot/models/ColorHelper.dart';
 import 'MyCafe.dart';
+import 'Home.dart';
 
 
 
@@ -39,8 +40,8 @@ class _BottomBar extends State<BottomBar> {
     super.initState();
 
     widgetList = [
-      const Mycafe(),
-      const MyHomePage(),
+      const Home(),
+      const MiBarista(),
       const PerfilPersonal(), 
     ];
   }

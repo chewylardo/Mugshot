@@ -44,7 +44,8 @@ dependencies:
   path_provider: ^2.1.5
   path: ^1.9.0
   sqflite: ^2.4.1
-
+  flutter_email_sender: ^5.0.2  
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,4 +74,5 @@ flutter:
      - assets/pngs/cafetera.png
      - assets/pngs/Tamper.png
      - assets/pngs/filtro.png
+     - assets/data/Usabilidad.json
    

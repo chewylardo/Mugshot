@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mugshot/models/Question.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'package:mugshot/pages/MyCafe.dart';
 import 'Info del Cafe.dart';
@@ -7,6 +8,7 @@ import 'MyCafe.dart';
 import 'Navegacion.dart';
 import 'Opinion.dart';
 import 'package:mugshot/models/ColorHelper.dart';
+
 
 class PerfilPersonal extends StatelessWidget {
   const PerfilPersonal({super.key});
@@ -29,11 +31,13 @@ class PerfilPersonal extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
+            onPressed: () async {
+                String jsonInput = await DefaultAssetBundle.of(context).loadString('assets/data/Usabilidad.json');
+                final List<QuestionCategory> categories = parseJson(jsonInput);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  Opinion(),
+                        builder: (context) =>  OpinionScreen(categories: categories),
                       ),
                     );
                   },
@@ -123,5 +127,6 @@ class PerfilPersonal extends StatelessWidget {
     );
   }
 }
+
 
 
