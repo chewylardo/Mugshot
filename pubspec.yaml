@@ -77,4 +77,5 @@ flutter:
      - assets/pngs/Tamper.png
      - assets/pngs/filtro.png
      - assets/data/Usabilidad.json
+     - assets/data/PrecargaCafe.json
    

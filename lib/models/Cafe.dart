@@ -1,19 +1,20 @@
 import 'dart:io';
 import 'Usuario.dart';
+
 class Cafe {
   String nombre;
   String descripcion;
   List<String> ingredientes;
-  Usuario miCreador;
+  String miCreador;
   File miIamagen;
   List<String> pasos;
-  //fecha de registro
-  //Duracion
-  //Porductos asociados
-  //veces preparada
+  String fechaRegistro;
+  int duracion;
+  String porductosAsociados;
+  int vecesPreparada;
   
 
-  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen,this.pasos); 
+  Cafe({required this.nombre,required this.descripcion,required this.ingredientes,required this.miCreador,required this.miIamagen,required this.pasos,required this.fechaRegistro,required this.duracion,required this.vecesPreparada,required this.porductosAsociados,});
 
   void agregarIngrediente(String ingrediente) {
     ingredientes.add(ingrediente);
@@ -31,6 +32,29 @@ class Cafe {
 
     return listaDeIngredientes;
   }
+
+   factory Cafe.fromJson(Map<String, dynamic> json) {
+    return Cafe(
+      nombre: json['nombre'],
+      descripcion: json['descripcion'],
+      ingredientes: List<String>.from(json['ingredientes']),
+      miCreador: json['miCreador'],
+      miIamagen: File(json['miIamagen']),
+      pasos: List<String>.from(json['pasos']),
+      fechaRegistro: json['fechaRegistro'],
+      duracion: json['duracion'],
+      vecesPreparada: json['vecesPreparada'],
+      porductosAsociados: json['porductosAsociados'],
+    );
+  }
+
+
+
+
+
+
+
+  
 }
 
 

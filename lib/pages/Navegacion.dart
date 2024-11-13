@@ -1,13 +1,25 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'MiBarista.dart';
 import 'PerfilPersonal.dart';
-
 import 'package:mugshot/models/ColorHelper.dart';
-import 'MyCafe.dart';
 import 'Home.dart';
 
+import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:mugshot/models/Cafe.dart';
+import 'dart:convert';
 
+Future<List<Cafe>> cargarCafesDesdeJson() async {
+  // Lee el archivo JSON desde los assets
+  final String response = await rootBundle.loadString('assets/data/PrecargaCafe.json');
+  final List<dynamic> data = json.decode(response);
+
+  // Convierte cada elemento del JSON en un objeto Cafe
+  return data.map((json) => Cafe.fromJson(json)).toList();
+}
 
 
 
@@ -21,6 +33,8 @@ class BottomBar extends StatefulWidget{
     descripcion: 'Me gusta el café con leche y los gatos \nbarista amateur \nfan de el cafe marely :D',
     pfp: 'assets/pngs/perro.png',
   );
+  
+
 
   @override
   State<BottomBar> createState() => _BottomBar();

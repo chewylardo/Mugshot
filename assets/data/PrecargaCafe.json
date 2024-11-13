@@ -1,0 +1,85 @@
+[
+    {
+      "nombre": "Café Mocha",
+      "descripcion": "Café con sabor a chocolate y un toque de leche",
+      "ingredientes": [
+        "Café espresso",
+        "Leche",
+        "Sirope de chocolate",
+        "Azúcar"
+      ],
+      "miCreador": "Usuario123",
+      "miIamagen": "assets/pngs/Café.png",
+      "pasos": [
+        "Preparar el café espresso.",
+        "Calentar la leche y mezclar con el sirope de chocolate.",
+        "Añadir el café y mezclar bien.",
+        "Servir en una taza y añadir azúcar al gusto."
+      ],
+      "fechaRegistro": "2024-11-13",
+      "duracion": 10,
+      "vecesPreparada": 5,
+      "porductosAsociados": "Vasos, cucharas, sirope de chocolate"
+    },
+    {
+      "nombre": "Café Latte",
+      "descripcion": "Café con leche suave y espumoso",
+      "ingredientes": [
+        "Café espresso",
+        "Leche",
+        "Espuma de leche"
+      ],
+      "miCreador": "Usuario456",
+      "miIamagen": "assets/pngs/Café.png",
+      "pasos": [
+        "Preparar el café espresso.",
+        "Calentar la leche y crear espuma.",
+        "Verter el café en la taza y añadir la leche con espuma por encima."
+      ],
+      "fechaRegistro": "2024-10-10",
+      "duracion": 5,
+      "vecesPreparada": 12,
+      "porductosAsociados": "Vasos, espumador de leche"
+    },
+    {
+      "nombre": "Café Americano",
+      "descripcion": "Café largo y suave preparado con agua caliente",
+      "ingredientes": [
+        "Café espresso",
+        "Agua caliente"
+      ],
+      "miCreador": "Usuario789",
+      "miIamagen": "assets/pngs/Café.png",
+      "pasos": [
+        "Preparar el café espresso.",
+        "Añadir agua caliente al café espresso para suavizar el sabor."
+      ],
+      "fechaRegistro": "2024-09-25",
+      "duracion": 3,
+      "vecesPreparada": 20,
+      "porductosAsociados": "Tazas grandes"
+    },
+    {
+      "nombre": "Cappuccino",
+      "descripcion": "Café con leche y espuma, ideal para el desayuno",
+      "ingredientes": [
+        "Café espresso",
+        "Leche",
+        "Espuma de leche",
+        "Cacao en polvo"
+      ],
+      "miCreador": "Usuario321",
+      "miIamagen": "assets/pngs/Café.png",
+      "pasos": [
+        "Preparar el café espresso.",
+        "Calentar y espumar la leche.",
+        "Verter el café en una taza y añadir la leche espumada encima.",
+        "Espolvorear cacao en polvo para decorar."
+      ],
+      "fechaRegistro": "2024-08-18",
+      "duracion": 7,
+      "vecesPreparada": 8,
+      "porductosAsociados": "Tazas, cacao en polvo"
+    }
+  ]
+  
