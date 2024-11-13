@@ -14,7 +14,7 @@ class OpinionScreen extends StatefulWidget {
 
 class _OpinionScreenState extends State<OpinionScreen> {
   
-  // Function to compile the slider data into a string format
+
   String compileSliderData(List<QuestionCategory> categories) {
     String result = "Survey Responses:\n\n";
     
@@ -52,13 +52,13 @@ class _OpinionScreenState extends State<OpinionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Opinion Screen")),
-      body: SingleChildScrollView(  // Wrapping the entire body in a scrollable view
+      body: SingleChildScrollView(  
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Card widget wrapping the content
+     
               Card(
                 elevation: 4,
                 shape: RoundedRectangleBorder(
@@ -69,10 +69,10 @@ class _OpinionScreenState extends State<OpinionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Looping through the categories and rendering the questions with sliders
+                     
                       ListView.builder(
-                        shrinkWrap: true,  // Makes ListView fit within the available space
-                        physics: NeverScrollableScrollPhysics(),  // Disable internal scrolling
+                        shrinkWrap: true,  
+                        physics: NeverScrollableScrollPhysics(),  
                         itemCount: widget.categories.length,
                         itemBuilder: (context, categoryIndex) {
                           final category = widget.categories[categoryIndex];
@@ -122,7 +122,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              // Button to trigger email sending
+            
               Center(
                 child: ElevatedButton(
                   onPressed: () {

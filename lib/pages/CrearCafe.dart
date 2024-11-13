@@ -78,9 +78,10 @@ class _CrearcafeState extends State<Crearcafe> {
 
     }
     
+       List<String> pasos = ['-primer paso\n','-segundo paso\n','-tercer paso\n'];
 
 
-    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario,_selectedImage!,contador);
+    Cafe myCafe = Cafe(savedName, savedDescription, misIngredientes,BottomBar.mainUsuario,_selectedImage!,pasos);
     return myCafe;
   }
 

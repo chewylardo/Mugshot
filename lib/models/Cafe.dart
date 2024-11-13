@@ -6,9 +6,14 @@ class Cafe {
   List<String> ingredientes;
   Usuario miCreador;
   File miIamagen;
-  int key;
+  List<String> pasos;
+  //fecha de registro
+  //Duracion
+  //Porductos asociados
+  //veces preparada
+  
 
-  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen,this.key); 
+  Cafe(this.nombre, this.descripcion, this.ingredientes,this.miCreador,this.miIamagen,this.pasos); 
 
   void agregarIngrediente(String ingrediente) {
     ingredientes.add(ingrediente);

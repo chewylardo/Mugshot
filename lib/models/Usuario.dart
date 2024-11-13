@@ -9,9 +9,10 @@ class Usuario {
   String descripcion;
   String pfp;
   List<Cafe> misCafes; 
-  List<Cafe> misFavoritos;
+  
 
-  Usuario({required this.nombre,required this.usuario,this.rating = 0, this.descripcion = '',this.pfp = '',List<Cafe>? misCafes, List<Cafe>? misFavoritos, })  : misCafes = misCafes ?? [], misFavoritos = misFavoritos ?? []; 
+
+  Usuario({required this.nombre,required this.usuario,this.rating = 0, this.descripcion = '',this.pfp = '',List<Cafe>? misCafes, List<Cafe>? misFavoritos, })  : misCafes = misCafes ?? [];
 
 
   void agregarCafe(Cafe cafe) {
@@ -19,9 +20,6 @@ class Usuario {
     misCafes.add(cafe);
   }
 
-  void agregarFavorito(Cafe cafe) {
-
-    misFavoritos.add(cafe); 
-  }
+  
 
 }

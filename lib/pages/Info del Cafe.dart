@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/logger.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'package:share_plus/share_plus.dart';
 import 'package:mugshot/models/Cafe.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'package:mugshot/pages/Perfil.dart';
 import 'dart:io';
 import 'Navegacion.dart';
 import 'package:mugshot/models/ColorHelper.dart';
+
+
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+
+
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
 
 class InfoCafe extends StatelessWidget {
   const InfoCafe({super.key, required this.cofee, required this.usuario});
@@ -15,7 +29,7 @@ class InfoCafe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool fav = false;
+    
 
     return StatefulBuilder(
       builder: (context, setState) {
@@ -90,15 +104,11 @@ class InfoCafe extends StatelessWidget {
                 top: 16,
                 right: 16,
                 child: IconButton(
-                  icon: Icon(
-                    Icons.star,
-                    color: fav ? Colors.blue : Colors.grey,
+                  icon: const Icon(
+                    Icons.share
                   ),
-                  onPressed: () {
-                    setState(() {
-                      fav = !fav;
-                    });
-                    BottomBar.mainUsuario.misFavoritos.add(cofee);
+                  onPressed: ()async {
+                   shareImageWithMessage();
                   },
                 ),
               ),
@@ -108,4 +118,31 @@ class InfoCafe extends StatelessWidget {
       },
     );
   }
+
+
+  
 }
+
+
+// alfin salio ;-;
+Future<void> shareImageWithMessage() async {
+
+  final ByteData bytes = await rootBundle.load('assets/pngs/Perro2.png');
+
+  final Uint8List list = bytes.buffer.asUint8List();
+
+
+  final tempDir = await getTemporaryDirectory();
+
+  final file = await File('${tempDir.path}/Perro2.png').create();
+
+  await file.writeAsBytes(list);
+
+
+  final xFile = XFile(file.path);
+
+ 
+ 
+  await Share.shareXFiles([xFile], text: 'mensaje generado con apliccaion flutter');
+}
+

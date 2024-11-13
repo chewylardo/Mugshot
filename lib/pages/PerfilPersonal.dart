@@ -3,7 +3,6 @@ import 'package:mugshot/models/Question.dart';
 import 'package:mugshot/models/Usuario.dart';
 import 'package:mugshot/pages/MyCafe.dart';
 import 'Info del Cafe.dart';
-import 'Favorites.dart';
 import 'MyCafe.dart';
 import 'Navegacion.dart';
 import 'Opinion.dart';
@@ -106,20 +105,7 @@ class PerfilPersonal extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               const SizedBox(height: 10),
-              Material(
-                elevation: 4,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Favorites(),
-                      ),
-                    );
-                  },
-                  child: const Text('Ver Favoritos', style: TextStyle(color: Colors.black)),
-                ),
-              ),
+             
             ],
           ),
         ),

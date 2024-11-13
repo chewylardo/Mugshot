@@ -83,10 +83,10 @@ class _MiBarista extends State<MiBarista> {
               pfp: 'assets/pngs/gato.png',
             );
 
-      
-            Cafe cafe1 = Cafe('cargado', 'solo es cafe con agua', receta1, Usuario2, imageFile,1);
-            Cafe cafe2 = Cafe('nocturno', 'cafe para trabajar toda la noche en proyectos universitarios', receta2, Usuario1, imageFile,2);
-            Cafe cafe3 = Cafe('suave', 'relajante expresion del arte enfocada en un cafe con sabores iconicos', receta3, Usuario1, imageFile,3);
+            List<String> pasos = ['-primer paso\n','-segundo paso\n','-tercer paso\n'];
+            Cafe cafe1 = Cafe('cargado', 'solo es cafe con agua', receta1, Usuario2, imageFile,pasos);
+            Cafe cafe2 = Cafe('nocturno', 'cafe para trabajar toda la noche en proyectos universitarios', receta2, Usuario1, imageFile,pasos);
+            Cafe cafe3 = Cafe('suave', 'relajante expresion del arte enfocada en un cafe con sabores iconicos', receta3, Usuario1, imageFile,pasos);
 
             Usuario1.misCafes.add(cafe2);
             Usuario1.misCafes.add(cafe3);

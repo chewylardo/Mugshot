@@ -53,7 +53,7 @@ class _Home extends State<Home> {
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (snapshot.hasData && snapshot.data != null) {
-                  final cafe = mainUsuario.misCafes.last;  // Get the last coffee recipe
+                  final cafe = mainUsuario.misCafes.last; 
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 10.0),
                     decoration: BoxDecoration(
