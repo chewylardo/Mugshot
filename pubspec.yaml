@@ -54,13 +54,17 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.14.1
 
-flutter_icons:
-  android: true
+
+flutter_launcher_icons:
+ 
+  android: "launcher_icon"
   ios: true
-  image_path: "assets/pngs/splash.png"
-
-
-
+  remove_alpha_ios: true
+  image_path: "assets/pngs/icon.png"
+  min_sdk_android: 24
+  adaptive_icon_backgound: "#ffffff"
+  adaptive_icon_foreground: "assets/pngs/icon.png"
+ 
 
 flutter:
 
@@ -78,4 +82,5 @@ flutter:
      - assets/pngs/filtro.png
      - assets/data/Usabilidad.json
      - assets/data/PrecargaCafe.json
+     - assets/pngs/icon.png
    

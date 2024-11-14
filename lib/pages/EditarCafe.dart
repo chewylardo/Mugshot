@@ -60,7 +60,7 @@ class _CrearcafeState extends State<Crearcafe> {
 
   void _saveTime() {
     setState(() {
-     
+    
       if (_timeController.text.isNotEmpty && int.tryParse(_timeController.text) != null) {
         savedTime = int.parse(_timeController.text);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Time: $savedTime')));
@@ -94,7 +94,7 @@ class _CrearcafeState extends State<Crearcafe> {
       misIngredientes.add(ingredients[i]);
     }
 
- 
+  
     String fechaRegistro = DateTime.now().toString();
 
     Cafe myCafe = Cafe(
@@ -207,7 +207,7 @@ class _CrearcafeState extends State<Crearcafe> {
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveIngredients, child: const Text('Añadir')),
+                ElevatedButton(onPressed: _saveIngredients, child: const Text('Guardar')),
               ],
             ),
             const SizedBox(height: 20),
@@ -246,7 +246,7 @@ class _CrearcafeState extends State<Crearcafe> {
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveProducts, child: const Text('Añadir')),
+                ElevatedButton(onPressed: _saveProducts, child: const Text('Guardar')),
               ],
             ),
             const SizedBox(height: 20),
@@ -265,7 +265,7 @@ class _CrearcafeState extends State<Crearcafe> {
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveSteps, child: const Text('Añadir')),
+                ElevatedButton(onPressed: _saveSteps, child: const Text('Guardar')),
               ],
             ),
             const SizedBox(height: 20),

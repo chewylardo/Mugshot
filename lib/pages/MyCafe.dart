@@ -16,8 +16,8 @@ class Mycafe extends StatefulWidget {
 
 class _Mycafe extends State<Mycafe> {
   List<bool> likeStates = List.generate(5, (_) => false);
-  
-  Future<File?> _loadProfileImage(String imagePath) async {
+
+  Future<File?> _loadCafeImage(String imagePath) async {
     if (imagePath.isNotEmpty) {
       return File(imagePath);
     }
@@ -28,7 +28,7 @@ class _Mycafe extends State<Mycafe> {
   Widget build(BuildContext context) {
     final Usuario mainUsuario = BottomBar.mainUsuario;
     final String nombre = mainUsuario.nombre;
-    print("misCafes length: ${mainUsuario.misCafes.length}"); 
+    print("misCafes length: ${mainUsuario.misCafes.length}");
 
     return Scaffold(
       backgroundColor: ColorHelper.second,
@@ -39,22 +39,20 @@ class _Mycafe extends State<Mycafe> {
           style: const TextStyle(color: Colors.white),
         ),
       ),
-
       body: mainUsuario.misCafes.isNotEmpty
-          ? FutureBuilder<File?>(
-              future: _loadProfileImage(mainUsuario.pfp),
-              builder: (context, snapshot) {
-                print("misCafes length inside FutureBuilder: ${mainUsuario.misCafes.length}"); 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
-                } else if (snapshot.hasData && snapshot.data != null) {
-                  return ListView.builder(
-                    padding: const EdgeInsets.all(16.0),
-                    itemCount: mainUsuario.misCafes.length,
-                    itemBuilder: (context, index) {
-                      final cafe = mainUsuario.misCafes[index];
+          ? ListView.builder(
+              padding: const EdgeInsets.all(16.0),
+              itemCount: mainUsuario.misCafes.length,
+              itemBuilder: (context, index) {
+                final cafe = mainUsuario.misCafes[index];
+                return FutureBuilder<File?>(
+                  future: _loadCafeImage(cafe.miIamagen.path), 
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    } else if (snapshot.hasData && snapshot.data != null) {
                       return Container(
                         margin: const EdgeInsets.symmetric(vertical: 10.0),
                         decoration: BoxDecoration(
@@ -144,11 +142,11 @@ class _Mycafe extends State<Mycafe> {
                           ),
                         ),
                       );
-                    },
-                  );
-                } else {
-                  return const Center(child: Text('No se encontró la imagen'));
-                }
+                    } else {
+                      return const Center(child: Text('No se encontró la imagen'));
+                    }
+                  },
+                );
               },
             )
           : const Center(
@@ -157,18 +155,7 @@ class _Mycafe extends State<Mycafe> {
                 style: TextStyle(fontSize: 24, color: Colors.grey),
               ),
             ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Crearcafe(miUsuario: BottomBar.mainUsuario),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
+     
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:mugshot/pages/MyCafe.dart';
 import 'Navegacion.dart';
 import 'Opinion.dart';
 import 'package:mugshot/models/ColorHelper.dart';
-
+import 'CrearCafe.dart';
 
 class PerfilPersonal extends StatelessWidget {
   const PerfilPersonal({super.key});
@@ -22,22 +22,21 @@ class PerfilPersonal extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorHelper.second,
       appBar: AppBar(
-        
-        title: Text(nombre,style:const TextStyle(color: Colors.white),),
+        title: Text(nombre, style: const TextStyle(color: Colors.white)),
         backgroundColor: ColorHelper.main,
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () async {
-                String jsonInput = await DefaultAssetBundle.of(context).loadString('assets/data/Usabilidad.json');
-                final List<QuestionCategory> categories = parseJson(jsonInput);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  OpinionScreen(categories: categories),
-                      ),
-                    );
-                  },
+              String jsonInput = await DefaultAssetBundle.of(context).loadString('assets/data/Usabilidad.json');
+              final List<QuestionCategory> categories = parseJson(jsonInput);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OpinionScreen(categories: categories),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -87,6 +86,7 @@ class PerfilPersonal extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
+              // First button ("Ver Recetas")
               Material(
                 elevation: 20,
                 child: TextButton(
@@ -102,8 +102,22 @@ class PerfilPersonal extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
+              // Second button ("Crear Cafe")
+              Material(
+                elevation: 20,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Crearcafe(miUsuario: BottomBar.mainUsuario),
+                      ),
+                    );
+                  },
+                  child: const Text('Crear Cafe', style: TextStyle(color: Colors.black)),
+                ),
+              ),
               const SizedBox(height: 10),
-             
             ],
           ),
         ),
@@ -111,6 +125,3 @@ class PerfilPersonal extends StatelessWidget {
     );
   }
 }
-
-
-

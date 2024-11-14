@@ -19,7 +19,8 @@
       "fechaRegistro": "2024-11-13",
       "duracion": 10,
       "vecesPreparada": 5,
-      "porductosAsociados": "Vasos, cucharas, sirope de chocolate"
+      "porductosAsociados": "Vasos, cucharas, sirope de chocolate",
+      "soyPrecargado": 1
     },
     {
       "nombre": "Café Latte",
@@ -39,7 +40,8 @@
       "fechaRegistro": "2024-10-10",
       "duracion": 5,
       "vecesPreparada": 12,
-      "porductosAsociados": "Vasos, espumador de leche"
+      "porductosAsociados": "Vasos, espumador de leche",
+      "soyPrecargado": 1
     },
     {
       "nombre": "Café Americano",
@@ -57,7 +59,8 @@
       "fechaRegistro": "2024-09-25",
       "duracion": 3,
       "vecesPreparada": 20,
-      "porductosAsociados": "Tazas grandes"
+      "porductosAsociados": "Tazas grandes",
+      "soyPrecargado": 1
     },
     {
       "nombre": "Cappuccino",
@@ -79,7 +82,8 @@
       "fechaRegistro": "2024-08-18",
       "duracion": 7,
       "vecesPreparada": 8,
-      "porductosAsociados": "Tazas, cacao en polvo"
+      "porductosAsociados": "Tazas, cacao en polvo",
+      "soyPrecargado": 1
     }
   ]
   

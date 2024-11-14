@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'Usuario.dart';
+
 
 class Cafe {
   String nombre;
@@ -12,9 +12,10 @@ class Cafe {
   int duracion;
   String porductosAsociados;
   int vecesPreparada;
+  int soyPrecargado;
   
 
-  Cafe({required this.nombre,required this.descripcion,required this.ingredientes,required this.miCreador,required this.miIamagen,required this.pasos,required this.fechaRegistro,required this.duracion,required this.vecesPreparada,required this.porductosAsociados,});
+  Cafe({required this.nombre,required this.descripcion,required this.ingredientes,required this.miCreador,required this.miIamagen,required this.pasos,required this.fechaRegistro,required this.duracion,required this.vecesPreparada,required this.porductosAsociados,required this.soyPrecargado});
 
   void agregarIngrediente(String ingrediente) {
     ingredientes.add(ingrediente);
@@ -45,6 +46,7 @@ class Cafe {
       duracion: json['duracion'],
       vecesPreparada: json['vecesPreparada'],
       porductosAsociados: json['porductosAsociados'],
+      soyPrecargado: json['soyPrecargado']
     );
   }
 
