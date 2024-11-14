@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
+import 'package:mugshot/pages/EditarCafe.dart';
 
 import 'Info del Cafe.dart';
 
@@ -9,10 +10,9 @@ import 'package:mugshot/models/ColorHelper.dart';
 import 'package:mugshot/models/Cafe.dart';
 
 List<Cafe> mainCafe(Usuario miCreador) {
-  // Sort the 'misCafes' list in place by 'vecesPreparada' in descending order
+  
   miCreador.misCafes.sort((a, b) => b.vecesPreparada.compareTo(a.vecesPreparada));
 
-  // Take the top 3 most prepared coffees
   List<Cafe> ordenados = miCreador.misCafes.take(3).toList();
 
   return ordenados;
@@ -42,7 +42,7 @@ class _Home extends State<Home> {
 
     print("misCafes length: ${mainUsuario.misCafes.length}");
 
-    List<Cafe> cafesOrdenados = mainCafe(mainUsuario); // Get the sorted cafes
+    List<Cafe> cafesOrdenados = mainCafe(mainUsuario); 
 
     return Scaffold(
       backgroundColor: ColorHelper.second,
@@ -159,12 +159,34 @@ class _Home extends State<Home> {
                                   },
                                 ),
                               ),
+                           
+                              Positioned(
+                                top: 16,
+                                right: 16,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EditarCafeScreen(
+                                        
+                                          cafe: cafe,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       );
                     } else {
-                      return const Center(child: Text('No se encontró la imagen'));
+                      return const Center(child: Text('No se encontró la imagen\nVaya a crear recetas \nen su perfil'));
                     }
                   },
                 );
@@ -172,10 +194,11 @@ class _Home extends State<Home> {
             )
           : const Center(
               child: Text(
-                'No existen cafes registrados',
-                style: TextStyle(fontSize: 24, color: Colors.grey),
+                'No existen cafes registrados.\nVaya a crear recetas \nen su perfil.',
+                style: TextStyle(fontSize: 24, color: Colors.white),
               ),
             ),
     );
   }
 }
+

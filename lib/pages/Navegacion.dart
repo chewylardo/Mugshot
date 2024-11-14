@@ -13,11 +13,11 @@ import 'package:mugshot/models/Cafe.dart';
 import 'dart:convert';
 
 Future<List<Cafe>> cargarCafesDesdeJson() async {
-  // Lee el archivo JSON desde los assets
+  
   final String response = await rootBundle.loadString('assets/data/PrecargaCafe.json');
   final List<dynamic> data = json.decode(response);
 
-  // Convierte cada elemento del JSON en un objeto Cafe
+
   return data.map((json) => Cafe.fromJson(json)).toList();
 }
 
@@ -90,7 +90,7 @@ class _BottomBar extends State<BottomBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.coffee),
-          label: 'Tienda',
+          label: 'Mi Barista',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle),

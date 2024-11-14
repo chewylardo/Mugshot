@@ -23,7 +23,7 @@ class _CrearcafeState extends State<Crearcafe> {
   final TextEditingController _timeController = TextEditingController();
   final TextEditingController _productsController = TextEditingController();
   final TextEditingController _stepsController = TextEditingController(); 
-
+  
   String? savedName;
   String? savedDescription;
   File? _selectedImage;
@@ -55,12 +55,11 @@ class _CrearcafeState extends State<Crearcafe> {
         _ingredientsController.clear();
       }
     });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Ingredient: ${_ingredientsController.text}')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Ingredient')));
   }
 
   void _saveTime() {
     setState(() {
-     
       if (_timeController.text.isNotEmpty && int.tryParse(_timeController.text) != null) {
         savedTime = int.parse(_timeController.text);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Time: $savedTime')));
@@ -75,7 +74,7 @@ class _CrearcafeState extends State<Crearcafe> {
       savedProducts = _productsController.text;
     });
     _productsController.clear();
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Products: $savedProducts')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Products')));
   }
 
   void _saveSteps() {
@@ -85,38 +84,30 @@ class _CrearcafeState extends State<Crearcafe> {
         _stepsController.clear();
       }
     });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Step: ${_stepsController.text}')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved Step')));
   }
 
   Cafe _generarCafe(String savedName, String savedDescription, List<String> ingredients, String savedProducts, int savedTime, List<String> steps) {
-    List<String> misIngredientes = [];
-    for (int i = 0; i < ingredients.length; i++) {
-      misIngredientes.add(ingredients[i]);
-    }
-
- 
     String fechaRegistro = DateTime.now().toString();
 
-    Cafe myCafe = Cafe(
+    return Cafe(
       nombre: savedName,
       descripcion: savedDescription,
-      ingredientes: misIngredientes,
-      miCreador: '@Usuario Por Defecto',
+      ingredientes: ingredients,
+      miCreador: savedName,
       miIamagen: _selectedImage!,
       pasos: steps,
-      fechaRegistro: fechaRegistro, 
-      duracion: savedTime, 
+      fechaRegistro: fechaRegistro,
+      duracion: savedTime,
       vecesPreparada: 0,
-      porductosAsociados: savedProducts, 
+      porductosAsociados: savedProducts,
       soyPrecargado: 0,
     );
-
-    return myCafe;
   }
 
   void _darCafe() {
     if (savedName != null && savedDescription != null && ingredients.isNotEmpty && _selectedImage != null && savedTime != null && savedProducts != null && steps.isNotEmpty) {
-      BottomBar.mainUsuario.agregarCafe(_generarCafe(savedName!, savedDescription!, ingredients, savedProducts!, savedTime!, steps));
+      widget.miUsuario.agregarCafe(_generarCafe(savedName!, savedDescription!, ingredients, savedProducts!, savedTime!, steps));
       Navigator.pop(context);  
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Por favor, rellena todos los campos')));
@@ -149,12 +140,12 @@ class _CrearcafeState extends State<Crearcafe> {
         backgroundColor: ColorHelper.main,
         title: const Text('Creemos un café hoy', style: TextStyle(color: Colors.white)),
       ),
-      body: SingleChildScrollView(  
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             const SizedBox(height: 20),
-            const Text('Nombre del café', style: TextStyle(fontSize: 24)),
+            const Text('Nombre del café', style: TextStyle(fontSize: 24, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -164,16 +155,22 @@ class _CrearcafeState extends State<Crearcafe> {
                       border: OutlineInputBorder(),
                       labelText: 'Nombre',
                       hintText: 'Ingresa el nombre de tu café',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveName, child: const Text('Guardar')),
+                ElevatedButton(
+                  onPressed: _saveName,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Guardar', style: TextStyle(color: Colors.white)),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Descripción', style: TextStyle(fontSize: 18)),
+            const Text('Descripción', style: TextStyle(fontSize: 18, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -183,16 +180,22 @@ class _CrearcafeState extends State<Crearcafe> {
                       border: OutlineInputBorder(),
                       labelText: 'Descripción',
                       hintText: 'Ingresa una descripción de tu café',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveDescription, child: const Text('Guardar')),
+                ElevatedButton(
+                  onPressed: _saveDescription,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Guardar', style: TextStyle(color: Colors.white)),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Ingredientes', style: TextStyle(fontSize: 18)),
+            const Text('Ingredientes', style: TextStyle(fontSize: 18, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -202,16 +205,29 @@ class _CrearcafeState extends State<Crearcafe> {
                       border: OutlineInputBorder(),
                       labelText: 'Ingrediente',
                       hintText: 'Ingresa un ingrediente',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveIngredients, child: const Text('Añadir')),
+                ElevatedButton(
+                  onPressed: _saveIngredients,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Añadir', style: TextStyle(color: Colors.white)),
+                ),
               ],
             ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: ingredients.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(ingredients[index], style: const TextStyle(color: Colors.white)),
+              ),
+            ),
             const SizedBox(height: 20),
-            const Text('Tiempo (minutos)', style: TextStyle(fontSize: 18)),
+            const Text('Tiempo (minutos)', style: TextStyle(fontSize: 18, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -221,17 +237,23 @@ class _CrearcafeState extends State<Crearcafe> {
                       border: OutlineInputBorder(),
                       labelText: 'Duración',
                       hintText: 'Tiempo en minutos',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                     keyboardType: TextInputType.number,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveTime, child: const Text('Guardar')),
+                ElevatedButton(
+                  onPressed: _saveTime,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Guardar', style: TextStyle(color: Colors.white)),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Productos Asociados', style: TextStyle(fontSize: 18)),
+            const Text('Productos Asociados', style: TextStyle(fontSize: 18, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -240,17 +262,23 @@ class _CrearcafeState extends State<Crearcafe> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Productos',
-                      hintText: 'Productos asociados a tu café',
+                      hintText: 'Ingresa productos asociados',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveProducts, child: const Text('Añadir')),
+                ElevatedButton(
+                  onPressed: _saveProducts,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Guardar', style: TextStyle(color: Colors.white)),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Pasos de Preparación', style: TextStyle(fontSize: 18)),
+            const Text('Pasos de Preparación', style: TextStyle(fontSize: 18, color: Colors.white)),
             Row(
               children: [
                 Expanded(
@@ -259,34 +287,54 @@ class _CrearcafeState extends State<Crearcafe> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Paso',
-                      hintText: 'Describe el paso de la preparación',
+                      hintText: 'Describe un paso de preparación',
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                     maxLines: 1,
                   ),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(onPressed: _saveSteps, child: const Text('Añadir')),
+                ElevatedButton(
+                  onPressed: _saveSteps,
+                  style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+                  child: const Text('Añadir', style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: steps.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(steps[index], style: const TextStyle(color: Colors.white)),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _pickImageFromGallery,
+                    child: const Text('Seleccionar Imagen de Galería'),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _pickImageFromCamera,
+                    child: const Text('Tomar Foto'),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.grey), 
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            _selectedImage != null
-                ? Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      image: DecorationImage(
-                        image: FileImage(_selectedImage!),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                : const Text('No se ha seleccionado una imagen'),
-            const SizedBox(height: 20),
-            ElevatedButton(onPressed: _pickImageFromGallery, child: const Text('Seleccionar imagen desde la galería')),
-            ElevatedButton(onPressed: _pickImageFromCamera, child: const Text('Tomar una foto')),
-            const SizedBox(height: 20),
-            ElevatedButton(onPressed: _darCafe, child: const Text('Guardar Café')),
+            ElevatedButton(
+              onPressed: _darCafe,
+              style: ElevatedButton.styleFrom(backgroundColor: ColorHelper.main),
+              child: const Text('Finalizar y Guardar Café', style: TextStyle(color: Colors.white)),
+            ),
           ],
         ),
       ),

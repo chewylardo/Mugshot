@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
+import 'package:mugshot/pages/EditarCafe.dart';
 import 'package:path_provider/path_provider.dart';
 import 'Info del Cafe.dart';
 import 'CrearCafe.dart';
@@ -135,6 +136,27 @@ class _Mycafe extends State<Mycafe> {
                                     setState(() {
                                       likeStates[index] = !likeStates[index];
                                     });
+                                  },
+                                ),
+                              ),
+                              Positioned(
+                                top: 16,
+                                right: 16,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EditarCafeScreen(
+                                        
+                                          cafe: cafe,
+                                        ),
+                                      ),
+                                    );
                                   },
                                 ),
                               ),

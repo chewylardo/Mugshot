@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:mugshot/models/ColorHelper.dart';
 import 'package:mugshot/models/Question.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OpinionScreen extends StatefulWidget {
   final List<QuestionCategory> categories;
 
-  OpinionScreen({required this.categories});
+  const OpinionScreen({required this.categories});
 
   @override
   _OpinionScreenState createState() => _OpinionScreenState();
@@ -29,9 +30,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
     return result;
   }
 
-  // Function to send email
  
- final _key = GlobalKey<FormState>();
 
  sendEmail(String subject,String body, String recipientemail) async{
   final Email email = Email(
@@ -51,7 +50,8 @@ class _OpinionScreenState extends State<OpinionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Opinion Screen")),
+      backgroundColor: ColorHelper.second,
+      appBar: AppBar(title: const Text("Opinion Screen"), backgroundColor: ColorHelper.main,),
       body: SingleChildScrollView(  
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -72,7 +72,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
                      
                       ListView.builder(
                         shrinkWrap: true,  
-                        physics: NeverScrollableScrollPhysics(),  
+                        physics: const NeverScrollableScrollPhysics(),  
                         itemCount: widget.categories.length,
                         itemBuilder: (context, categoryIndex) {
                           final category = widget.categories[categoryIndex];
@@ -83,13 +83,13 @@ class _OpinionScreenState extends State<OpinionScreen> {
                               children: [
                                 Text(
                                   category.name.toUpperCase(),
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
                                 ...category.questions.map((question) {
                                   return Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(question.titulo, style: TextStyle(fontSize: 16)),
+                                      Text(question.titulo, style: const TextStyle(fontSize: 16)),
                                    
                                       
                                        
@@ -108,7 +108,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
                                           });
                                         },
                                       ),
-                                      SizedBox(height: 10),
+                                      const SizedBox(height: 10),
                                     ],
                                   );
                                 }).toList(),
@@ -121,7 +121,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             
               Center(
                 child: ElevatedButton(
@@ -134,7 +134,7 @@ class _OpinionScreenState extends State<OpinionScreen> {
                   },
                   child: Text('Enviar respuestas'),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mugshot/models/Usuario.dart';
+import 'package:mugshot/pages/EditarCafe.dart';
 import 'package:path_provider/path_provider.dart';
 import 'Info del Cafe.dart';
 import 'CrearCafe.dart';
@@ -26,7 +27,7 @@ class _MiBarista extends State<MiBarista> {
   void initState() {
     super.initState();
     _imageFile = loadImageAsFile('assets/pngs/Café.png');
-    _cafesFuture = cargarCafesDesdeJson();  // Aquí se llama a la función que carga los cafés
+    _cafesFuture = cargarCafesDesdeJson();  
   }
 
   Future<File> loadImageAsFile(String assetPath) async {
@@ -59,7 +60,7 @@ class _MiBarista extends State<MiBarista> {
           } else if (snapshot.hasData) {
             final File imageFile = snapshot.data!;
 
-            // Aquí es donde se usa FutureBuilder para los cafés
+         
             return FutureBuilder<List<Cafe>>(
               future: _cafesFuture,
               builder: (context, cafeSnapshot) {
@@ -154,6 +155,28 @@ class _MiBarista extends State<MiBarista> {
                                   },
                                 ),
                               ),
+                                  Positioned(
+                                top: 16,
+                                right: 16,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EditarCafeScreen(
+                                        
+                                          cafe: homeCofee[index],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              
                             ],
                           ),
                         ),

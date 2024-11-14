@@ -34,6 +34,33 @@ class Cafe {
     return listaDeIngredientes;
   }
 
+
+  String pasosToString() {
+    String listaDePasos = '';
+    if (this.pasos.isNotEmpty) {
+      for (int i = 0; i < pasos.length; i++) {
+        String paso = pasos[i];
+        listaDePasos += "${i + 1}. $paso\n"; 
+      }
+    }
+    return listaDePasos;
+  }
+
+
+  @override
+  String toString() {
+    return 'Cafe{'
+        'nombre: $nombre, '
+        'descripcion: $descripcion, '
+        'ingredientes: ${ingredientesToString()}, '
+        'miCreador: $miCreador, '
+        'pasos: ${pasosToString()}, '
+        'fechaRegistro: $fechaRegistro, '
+        'duracion: $duracion, '
+        'vecesPreparada: $vecesPreparada, '
+        'porductosAsociados: $porductosAsociados}';
+  }
+
    factory Cafe.fromJson(Map<String, dynamic> json) {
     return Cafe(
       nombre: json['nombre'],
@@ -50,7 +77,7 @@ class Cafe {
     );
   }
 
-
+  
 
 
 

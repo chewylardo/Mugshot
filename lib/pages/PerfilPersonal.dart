@@ -86,38 +86,61 @@ class PerfilPersonal extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // First button ("Ver Recetas")
-              Material(
-                elevation: 20,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Mycafe(),
-                      ),
-                    );
-                  },
-                  child: const Text('Ver Recetas', style: TextStyle(color: Colors.black)),
-                ),
-              ),
-              const SizedBox(height: 10),
-              // Second button ("Crear Cafe")
-              Material(
-                elevation: 20,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Crearcafe(miUsuario: BottomBar.mainUsuario),
-                      ),
-                    );
-                  },
-                  child: const Text('Crear Cafe', style: TextStyle(color: Colors.black)),
-                ),
-              ),
-              const SizedBox(height: 10),
+            
+            Material(
+  elevation: 0,  
+  child: TextButton(
+    style: TextButton.styleFrom(
+      backgroundColor: ColorHelper.fourth,
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0), 
+      shape: RoundedRectangleBorder( 
+        borderRadius: BorderRadius.circular(8.0), 
+      ),
+    ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Mycafe(),
+        ),
+      );
+    },
+    child: const Text(
+      'Ver Recetas',
+      style: TextStyle(color: Colors.white),
+    ),
+  ),
+),
+
+const SizedBox(height: 10),
+
+Material(
+  elevation: 0, 
+  child: TextButton(
+    style: TextButton.styleFrom(
+      backgroundColor: ColorHelper.fourth,
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+      shape: RoundedRectangleBorder( 
+        borderRadius: BorderRadius.circular(8.0), 
+      ),
+    ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Crearcafe(miUsuario: BottomBar.mainUsuario),
+        ),
+      );
+    },
+    child: const Text(
+      'Crear Cafe',
+      style: TextStyle(color: Colors.white),
+    ),
+  ),
+),
+
+const SizedBox(height: 10),
+
             ],
           ),
         ),
