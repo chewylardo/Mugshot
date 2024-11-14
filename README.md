@@ -32,7 +32,9 @@ Para poder hacer usao y testeo de la aplicacion en su estado actual solo de se d
 
 ### Link al pitch de la applicacion
 
-- [Video presentacion de Mugshot](https://youtu.be/_Lp05n64REs)
+- [Video presentacion de Mugshot 1](https://youtu.be/_Lp05n64REs)
+- [Video presentacion de Mugshot 2](https://youtu.be/O6Aw1g6kR3w)
+- [Link a material de la presentacion 2](https://www.canva.com/design/DAGPGFPX1D4/28DtEKja-1gQml2rn29m-w/edit?utm_content=DAGPGFPX1D4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 
 
