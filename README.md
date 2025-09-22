@@ -1,5 +1,6 @@
 # mugshot
 
+(this proyect was created for a mobile app development during University)
 Mugshot es una aplicacion movil multiplataformas desarrollada en flutter que tiene como proposito solucionar y facilitar la gestion y comunicacion de rercetas de 
 cafe para aquellos baristas tanto aspirantes como experimentados que esten en busca de nuevas preparaciones y esten interesados en compartir las suyas.
  Las funcionalidades anteriorente expuestas vienen como solucion a la falta de un hub existente que cuente con toda la informacion necesaria para realizar 
